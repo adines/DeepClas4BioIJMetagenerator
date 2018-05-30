@@ -42,12 +42,6 @@ import org.w3c.dom.Element;
  */
 public class MetaGeneradorPluginsIJ {
 
-//    private String pathAPI;
-//
-//    private JComboBox<String> frameworkChoices;
-//    private JComboBox<String> modelChoices;
-//    private JOptionPane gd;
-//    private JOptionPane adAPI;
     public static String[] getParams() {
         String result[] = null;
         JDialog adAPId = null;
@@ -70,8 +64,7 @@ public class MetaGeneradorPluginsIJ {
             apiPanel.add(tf);
 
             JOptionPane adAPI = new JOptionPane(apiPanel, JOptionPane.PLAIN_MESSAGE, JOptionPane.YES_NO_OPTION);
-//			adAPI = new ActionDialog("Path API", apiPanel);
-//        adAPI.pack();
+
             adAPId = adAPI.createDialog("API path");
             adAPId.setVisible(true);
             Object selectedValue = adAPI.getValue();
