@@ -8,11 +8,11 @@
         <relativePath/>
     </parent>
     <groupId>com</groupId>
-    <artifactId>DeepClas4BioIJMetagenerator</artifactId>
+    <artifactId>MetageneradorPluginsIJ</artifactId>
     <version>1.0</version>
-    <name>DeepClas4BioIJMetagenerator</name>
-    <description>A plugin that allows to generate automatically new DeepClas4Bio plugins for ImageJ</description>
-    <url>https://github.com/adines/DeepClas4BioIJMetagenerator</url>
+    <name>MetageneradorPluginsIJ</name>
+    <description>A plugin that allows to generate automatically new ImageJ plugins</description>
+    <url>https://github.com/adines/MetageneradorPluginsIJ</url>
     <inceptionYear>2018</inceptionYear>
     <organization>
         <name>University of La Rioja</name>
@@ -31,20 +31,20 @@
         </mailingList>
     </mailingLists>
     <scm>
-        <connection>scm:git:git@github.com:adines/DeepClas4BioIJMetagenerator.git</connection>
-        <developerConnection>scm:git:git@github.com:adines/DeepClas4BioIJMetagenerator.git</developerConnection>
+        <connection>scm:git:git@github.com:adines/MetageneradorPluginsIJ.git</connection>
+        <developerConnection>scm:git:git@github.com:adines/MetageneradorPluginsIJ.git</developerConnection>
         <tag>HEAD</tag>
-        <url>git@github.com:adines/DeepClas4BioIJMetagenerator.git</url>
+        <url>git@github.com:adines/MetageneradorPluginsIJ.git</url>
     </scm>
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/adines/DeepClas4BioIJMetagenerator/issues</url>
+        <url>https://github.com/adines/MetageneradorPluginsIJ/issues</url>
     </issueManagement>
     <ciManagement>
         <system>None</system>
     </ciManagement>
     <properties>
-        <main-class>com.deepclas4bioijmetagenerator.DeepClas4BioIJMetagenerator</main-class>
+        <main-class>MetageneradorPluginsIJ</main-class>
         <license.licenseName>bsd_2</license.licenseName>
         <license.copyrightOwners>University of La Rioja</license.copyrightOwners>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
