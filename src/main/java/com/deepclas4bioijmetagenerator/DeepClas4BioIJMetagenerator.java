@@ -1,4 +1,4 @@
-package com.metageneradorpluginsij;
+package com.deepclas4bioijmetagenerator;
 
 import java.awt.GridLayout;
 import java.awt.Label;
@@ -40,7 +40,7 @@ import org.w3c.dom.Element;
  *
  * @author adines
  */
-public class MetaGeneradorPluginsIJ {
+public class DeepClas4BioIJMetagenerator {
 
     public static String[] getParams() {
         String result[] = null;
@@ -140,11 +140,11 @@ public class MetaGeneradorPluginsIJ {
                                 modelChoices.doLayout();
 
                             } catch (InterruptedException ex) {
-                                Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
                             } catch (IOException ex) {
-                                Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
                             } catch (org.json.simple.parser.ParseException ex) {
-                                Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
                     });
@@ -165,11 +165,11 @@ public class MetaGeneradorPluginsIJ {
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
-            Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
         } catch (org.json.simple.parser.ParseException ex) {
-            Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (adAPId != null) {
                 adAPId.dispose();
@@ -564,19 +564,19 @@ public class MetaGeneradorPluginsIJ {
                 transformer.transform(source, result);
 
             } catch (IOException ex) {
-                Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ParserConfigurationException ex) {
-                Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
             } catch (TransformerConfigurationException ex) {
-                Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
             } catch (TransformerException ex) {
-                Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 if (fw != null) {
                     try {
                         fw.close();
                     } catch (IOException ex) {
-                        Logger.getLogger(MetaGeneradorPluginsIJ.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(DeepClas4BioIJMetagenerator.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
