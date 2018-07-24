@@ -2,6 +2,8 @@ package com.deepclas4bioijmetagenerator;
 
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.FileWriter;
@@ -13,8 +15,10 @@ import java.util.logging.Logger;
 import java.io.File;
 import java.io.FileReader;
 import java.util.Calendar;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -56,12 +60,29 @@ public class DeepClas4BioIJMetagenerator {
                 python = "python3 ";
             }
 
-            GridLayout glAPI = new GridLayout(2, 1);
+            JFileChooser pathAPIFileChooser=new JFileChooser();
+            pathAPIFileChooser.setCurrentDirectory(new java.io.File("."));
+            pathAPIFileChooser.setDialogTitle("Select the path of the API");
+            pathAPIFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            
+            GridLayout glAPI = new GridLayout(2, 2);
             JPanel apiPanel = new JPanel(glAPI);
 
-            JTextField tf = new JTextField();
+            JLabel lPath=new JLabel();
+            JButton bPath=new JButton("Select");
             apiPanel.add(new JLabel("Introduce the path of the API"));
-            apiPanel.add(tf);
+            apiPanel.add(new JLabel());
+            apiPanel.add(lPath);
+            apiPanel.add(bPath);
+            
+            bPath.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(pathAPIFileChooser.showOpenDialog(apiPanel)==JFileChooser.APPROVE_OPTION){
+                        lPath.setText(pathAPIFileChooser.getSelectedFile().getAbsolutePath());
+                    }
+                }
+            });
 
             JOptionPane adAPI = new JOptionPane(apiPanel, JOptionPane.PLAIN_MESSAGE, JOptionPane.YES_NO_OPTION);
 
@@ -71,7 +92,7 @@ public class DeepClas4BioIJMetagenerator {
             if (selectedValue instanceof Integer) {
                 int selected = ((Integer) selectedValue).intValue();
                 if (selected == 0) {
-                    String pathAPI = tf.getText();
+                    String pathAPI = lPath.getText()+File.separator;
                     adAPId.dispose();
                     String comando = python + pathAPI + "listFrameworks.py";
                     Process p = Runtime.getRuntime().exec(comando);
