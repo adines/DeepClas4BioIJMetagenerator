@@ -60,25 +60,25 @@ public class DeepClas4BioIJMetagenerator {
                 python = "python3 ";
             }
 
-            JFileChooser pathAPIFileChooser=new JFileChooser();
+            JFileChooser pathAPIFileChooser = new JFileChooser();
             pathAPIFileChooser.setCurrentDirectory(new java.io.File("."));
             pathAPIFileChooser.setDialogTitle("Select the path of the API");
             pathAPIFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            
+
             GridLayout glAPI = new GridLayout(2, 2);
             JPanel apiPanel = new JPanel(glAPI);
 
-            JLabel lPath=new JLabel();
-            JButton bPath=new JButton("Select");
+            JLabel lPath = new JLabel();
+            JButton bPath = new JButton("Select");
             apiPanel.add(new JLabel("Introduce the path of the API"));
             apiPanel.add(new JLabel());
             apiPanel.add(lPath);
             apiPanel.add(bPath);
-            
+
             bPath.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if(pathAPIFileChooser.showOpenDialog(apiPanel)==JFileChooser.APPROVE_OPTION){
+                    if (pathAPIFileChooser.showOpenDialog(apiPanel) == JFileChooser.APPROVE_OPTION) {
                         lPath.setText(pathAPIFileChooser.getSelectedFile().getAbsolutePath());
                     }
                 }
@@ -92,7 +92,7 @@ public class DeepClas4BioIJMetagenerator {
             if (selectedValue instanceof Integer) {
                 int selected = ((Integer) selectedValue).intValue();
                 if (selected == 0) {
-                    String pathAPI = lPath.getText()+File.separator;
+                    String pathAPI = lPath.getText() + File.separator;
                     adAPId.dispose();
                     String comando = python + pathAPI + "listFrameworks.py";
                     Process p = Runtime.getRuntime().exec(comando);
@@ -250,7 +250,7 @@ public class DeepClas4BioIJMetagenerator {
                 //Parametros
                 pw.println("\t @Parameter");
                 pw.println("\t private ImagePlus imp;");
-                pw.println("\t @Parameter");
+                pw.println("\t JDialog adAPId = null;");
                 pw.println("\t private String pathAPI;");
                 pw.println();
                 //METODO RUN
@@ -260,6 +260,43 @@ public class DeepClas4BioIJMetagenerator {
                 pw.println("\t\t try{");
                 pw.println("\t\t\t String so=System.getProperty(\"os.name\");");
                 pw.println("\t\t\t String python;");
+
+                pw.println("\t\t\t JFileChooser pathAPIFileChooser = new JFileChooser();");
+                pw.println("\t\t\t pathAPIFileChooser.setCurrentDirectory(new java.io.File(\".\"));");
+                pw.println("\t\t\t pathAPIFileChooser.setDialogTitle(\"Select the path of the API\");");
+                pw.println("\t\t\t pathAPIFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);");
+
+                pw.println("\t\t\t GridLayout glAPI = new GridLayout(2, 2);");
+                pw.println("\t\t\t JPanel apiPanel = new JPanel(glAPI);");
+
+                pw.println("\t\t\t JLabel lPath = new JLabel();");
+                pw.println("\t\t\t JButton bPath = new JButton(\"Select\");");
+                pw.println("\t\t\t apiPanel.add(new JLabel(\"Select the path of the API\"));");
+                pw.println("\t\t\t apiPanel.add(new Label());");
+                pw.println("\t\t\t apiPanel.add(lPath);");
+                pw.println("\t\t\t apiPanel.add(bPath);");
+
+                pw.println("\t\t\t bPath.addActionListener(new ActionListener() {");
+                pw.println("\t\t\t\t @Override");
+                pw.println("\t\t\t\t public void actionPerformed(ActionEvent e) {");
+                pw.println("\t\t\t\t\t if (pathAPIFileChooser.showOpenDialog(apiPanel) == JFileChooser.APPROVE_OPTION) {");
+                pw.println("\t\t\t\t\t\t lPath.setText(pathAPIFileChooser.getSelectedFile().getAbsolutePath());");
+                pw.println("\t\t\t\t\t }");
+                pw.println("\t\t\t\t }");
+                pw.println("\t\t\t });");
+
+                pw.println("\t\t\t JOptionPane adAPI = new JOptionPane(apiPanel, JOptionPane.PLAIN_MESSAGE, JOptionPane.YES_NO_OPTION);");
+
+                pw.println("\t\t\t adAPId = adAPI.createDialog(\"API path\");");
+
+                pw.println("\t\t\t adAPId.setVisible(true);");
+                pw.println("\t\t\t Object selectedValue = adAPI.getValue();");
+                pw.println("\t\t\t if (selectedValue instanceof Integer) {");
+                pw.println("\t\t\t int selected = ((Integer) selectedValue).intValue();");
+                pw.println("\t\t\t if (selected == 0) {");
+                pw.println("\t\t\t pathAPI = lPath.getText() + File.separator;");
+
+                pw.println("\t\t\t adAPId.dispose();");
 
                 //SISTEMA OPERATIVO
                 pw.println("\t\t\t if(so.contains(\"Windows\")){");
@@ -285,7 +322,7 @@ public class DeepClas4BioIJMetagenerator {
                 pw.println("\t\t\t JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(\"data.json\"));");
                 pw.println("\t\t\t String classPredict = (String) jsonObject3.get(\"class\");");
                 pw.println("\t\t\t IJ.showMessage(\"Prediction\", \"The class which the image belongs is \" + classPredict);");
-
+                pw.println("}}"); //FIN DEL IF
                 pw.println("\t\t } catch (FileNotFoundException ex) {");
                 pw.println("\t\t\t IJ.showMessage(\"Error\", \"You need to indicate the path of the API in the config file.\");");
                 pw.println("\t\t } catch (IOException ex) {");
@@ -295,6 +332,12 @@ public class DeepClas4BioIJMetagenerator {
                 pw.println("\t\t } catch (ParseException ex) {");
                 pw.println("\t\t\t Logger.getLogger(" + className + ".class.getName()).log(Level.SEVERE, null, ex);");
                 pw.println("\t\t }");
+
+                pw.println("\t\t finally {");
+                pw.println("\t\t\t if (adAPId != null) {");
+                pw.println("\t\t\t\t adAPId.dispose();");
+                pw.println("\t\t\t }");
+                pw.println("\t\t}");
 
                 pw.println("\t }"); //FIN DEL RUN
 
