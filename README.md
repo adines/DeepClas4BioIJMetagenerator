@@ -9,5 +9,5 @@ The main benefit of use this project is that you can generate DeepClas4Bio plugi
 To use this plugin is necessary to have installed Java 8.
 
 ## Installation and use
-To use this plugin you can download the source code or better download the [jar file](https://github.com/adines/DeepClas4BioIJMetagenerator/releases/download/1.1/DeepClas4BioIJMetagenerator.jar). The you only have to execute it and select the framework and the model you want use. Finally the program generates the source code and the pom file necessary to create the plugin.
+To use this plugin you can download the source code or better download the [jar file](https://github.com/adines/DeepClas4BioIJMetagenerator/releases/download/1.1/DeepClas4BioIJMetagenerator.jar). Then you only have to execute it and select the framework and the model you want use. Finally the program generates the source code and the pom file necessary to create the plugin.
 
